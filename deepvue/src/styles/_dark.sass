@@ -1,0 +1,45 @@
+@import './mixins'
+
+[d-theme="dark"]
+  --d-background: 30, 32, 35
+  --d-text: 255, 255, 255
+  --d-gray-1: 24, 25, 28
+  --d-gray-2: 20, 20, 23
+  --d-gray-3: 15, 16, 19
+  --d-gray-4: 10, 11, 14
+  --d-shadow-opacity: .3
+  --d-dark: 0, 0, 0
+  --d-background-opacity: .6
+
+  .d-pagination-content
+    &.d-component-dark
+      .d-pagination__active
+        --d-color: 255, 255, 255
+        color: -color('gray-3')
+  .d-button
+    &.d-component-dark
+      &.d-button--transparent
+        color: -color('text') !important
+        &:hover
+          &:before
+            background: -color('color', .2)
+        &.d-button--active
+          &:before
+            background: -color('color', -var('background-opacity'))
+
+  .d-ripple,.d-ripple-invert,.d-ripple-content
+    --d-color: 0,0,0
+  .d-loading
+    --d-background: 0, 0, 0
+  .d-input-parent--state-dark
+    --d-dark: 255, 255, 255 !important
+    .d-input
+      background: #000 !important
+  .d-component-dark
+    --d-color: 0, 0, 0 !important
+    .d-avatar
+      color: #fff !important
+    &.d-alert
+      --d-color: 0, 0, 0 !important
+      background: -color('color', 1) !important
+      color: -color('text', 1) !important

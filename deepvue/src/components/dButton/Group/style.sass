@@ -1,0 +1,24 @@
+@import '../../../styles/mixins'
+
+.d-button-group
+  display: flex
+  align-items: center
+  justify-content: center
+  .d-button
+    margin: 0
+  .d-button:not(:last-of-type):not(:first-of-type)
+    border-radius: 0
+    border: 0
+    &.d-button--border
+      &:before
+        border-left: 0
+        width: 100%
+      + .d-button--border:not(:last-of-type)
+        &:before
+          border-right: 0
+          width: calc(100%)
+
+  .d-button:last-of-type
+    border-radius: 0 12px 12px 0
+  .d-button:first-of-type
+    border-radius: 12px 0 0 12px
