@@ -65,7 +65,8 @@ function getNavbar (lang = '/') {
             text: 'Components',
             items: [
               { text: `Button`, link: `${lang}docs/components/Button` },
-              // [new-1]
+              { text: 'Input', link: `${lang}docs/components/Input` },
+							// new-1
             ]
           }
         ]
@@ -101,7 +102,8 @@ function getSidebar (lang = '/') {
           collapsable: false,
           children: [
             `${lang}docs/components/Button`,
-            // [new-2]
+            `${lang}docs/components/Input`,
+						// new-2
           ]
         },
         {
