@@ -4,6 +4,9 @@ import DComponent from '../../../mixins/component';
 
 @Component
 export default class DInput extends DComponent {
+  public Class: string = '';
+  public prototype: any;
+
   @Prop({ default: '' }) value!: any;
   @Prop({ default: '' }) labelPlaceholder!: any;
   @Prop({ default: '' }) label!: any;

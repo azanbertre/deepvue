@@ -2,7 +2,7 @@ const path = require('path');
 const Components = require('./components.json');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const baseWebpackConfig = require('../webpack.base.js');
-const merge = require('webpack-merge');
+const { merge } = require('webpack-merge');
 
 // * Delete new placeholder
 delete Components['new'];

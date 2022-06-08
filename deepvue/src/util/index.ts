@@ -1,3 +1,60 @@
+const mergeClass = (classList: any, classNames: any) => {
+  const isClassListEmpty = !classList || !Array.isArray(classList) || !classList.length;
+  const isClassNamesEmpty = !classNames || classNames.constructor != String || !classNames.trim().length;
+
+  if (isClassListEmpty && isClassNamesEmpty) {
+    return [];
+  }
+
+  if (isClassListEmpty && !isClassNamesEmpty) {
+    return classNames.split(' ').map((el: string) => el.trim());
+  }
+
+  if (!isClassListEmpty && isClassNamesEmpty) {
+    return classList;
+  }
+
+  return mergeLists(classList, classNames.split(' ').map((el: string) => el.trim()));
+}
+
+const mergeLists = (list1: any, list2: any) => {
+  const isList1Empty = !list1 || !Array.isArray(list1) || !list1.length;
+  const isList2Empty = !list2 || !Array.isArray(list1) || !list2.length;
+
+  if (isList1Empty && isList2Empty) {
+    return [];
+  }
+
+  if (!isList1Empty && isList2Empty) {
+    return list1;
+  }
+
+  if (isList1Empty && !isList2Empty) {
+    return list2;
+  }
+
+  return list1.concat(list2);
+}
+
+const mergeDicts = (dict1: any, dict2: any) => {
+  const isDict1Empty = !dict1 || dict1.constructor != Object || !Object.keys(dict1).length;
+  const isDict2Empty = !dict2 || dict2.constructor != Object || !Object.keys(dict2).length;
+
+  if (isDict1Empty && isDict2Empty) {
+    return [];
+  }
+
+  if (!isDict1Empty && isDict2Empty) {
+    return dict1;
+  }
+
+  if (isDict1Empty && !isDict2Empty) {
+    return dict2;
+  }
+
+  return Object.assign({}, dict1, dict2);
+}
+
 const isColor = (color: string) => {
   const dColors = [
     'primary', 'secondary', 'success', 'danger', 'warning', 'dark', 'light',
@@ -50,13 +107,7 @@ const getColor = (color: string) => {
     const rgb = hexToRgb(color);
     newColor = `${rgb!.r},${rgb!.g},${rgb!.b}`;
   } else if (isColor(color)) {
-    const style = window.getComputedStyle(document.body);
-    newColor = style.getPropertyValue(`--d-${color}`);
-
-    if (isHEX(newColor.trim())) {
-      const rgb = hexToRgb(newColor.trim());
-      newColor = `${rgb!.r},${rgb!.g},${rgb!.b}`;
-    }
+    newColor = `var(--d-${color})`;
   } else {
     newColor = null;
   }
@@ -120,4 +171,7 @@ export {
   isColor,
   insertBody,
   removeBody,
+  mergeLists,
+  mergeDicts,
+  mergeClass
 }

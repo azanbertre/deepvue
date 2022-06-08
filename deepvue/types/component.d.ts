@@ -1,3 +1,4 @@
+// @ts-ignore
 import Vue from 'vue/types/index';
 
 // * Component common definition

@@ -1,4 +1,4 @@
-import component from './dButton';
+import component from './dButton.vue';
 import './style.sass';
 
 component.install = (vue: any) => {

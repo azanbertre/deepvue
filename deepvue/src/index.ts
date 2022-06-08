@@ -1,9 +1,7 @@
 import * as dComponents from './components/index';
-import * as dLayouts from './layout/index';
-
-import './styles/deepvue.sass';
-
 import defineDeepVueFunctions from './functions/defineDeepVueFunctions';
+import * as dLayouts from './layout/index';
+import './styles/deepvue.sass';
 import { DeepVueOptions, defineDeepVueOptions } from './util/defineDeepVueOptions';
 
 const install = (Vue: any, options?: DeepVueOptions) => {

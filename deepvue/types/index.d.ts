@@ -1,3 +1,4 @@
+// @ts-ignore
 import Vue, { VueConstructor } from 'vue';
 
 declare module 'vue/types/vue' {
