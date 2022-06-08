@@ -22,6 +22,8 @@ export default [
         output: 'dist/deepvue.min.css',
         outputStyle: "compressed",
         failOnError: true,
+        sass: sass,
+        indentedSyntax: true
       }), typescript()
     ]
   }

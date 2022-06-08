@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "rollup-plugin-sass": "^1.2.12"
+  }
+}

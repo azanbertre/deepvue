@@ -219,7 +219,7 @@ var componentProps = function () {
     };
 };
 
-var script$2 = vue.defineComponent({
+var script$3 = vue.defineComponent({
     props: __assign({ activeDisabled: { type: Boolean, default: false }, flat: { type: Boolean, default: false }, border: { type: Boolean, default: false }, gradient: { type: Boolean, default: false }, relief: { type: Boolean, default: false }, transparent: { type: Boolean, default: false }, shadow: { type: Boolean, default: false }, floating: { type: Boolean, default: false }, icon: { type: Boolean, default: false }, circle: { type: Boolean, default: false }, square: { type: Boolean, default: false }, upload: { type: Boolean, default: false }, block: { type: Boolean, default: false }, size: { type: String, default: null }, loading: { type: Boolean, default: false }, to: { type: String, default: null }, href: { type: String, default: null }, blank: { type: Boolean, default: false }, ripple: { type: Boolean, default: true }, animationType: { type: String, default: '' }, animateInactive: { type: Boolean, default: false } }, componentProps()),
     setup: function (props, ctx) {
         var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _t, _u, _v, _w, _x, _y, _z, _0, _1;
@@ -308,22 +308,44 @@ var script$2 = vue.defineComponent({
     }
 });
 
-script$2.__file = "src/components/dButton/Base/dButton.vue";
+script$3.__file = "src/components/dButton/Base/dButton.vue";
+
+script$3.install = function (vue) {
+    vue.component('d-btn', script$3);
+};
+if (typeof window !== 'undefined' && window.Vue) {
+    script$3.install(window.Vue);
+}
+
+var script$2 = vue.defineComponent({
+    props: {},
+    setup: function (props, ctx) {
+        var slots = ctx.slots;
+        var attrs = ctx.attrs;
+        var hasDefaultSlot = !!slots['default'];
+        var element = vue.h('div', __assign(__assign({}, attrs), { class: mergeClass(['d-button-group'], attrs.class) }), hasDefaultSlot ? slots.default() : null);
+        return function () { return [
+            element
+        ]; };
+    }
+});
+
+script$2.__file = "src/components/dButton/Group/dButtonGroup.vue";
 
 script$2.install = function (vue) {
-    vue.component('d-btn', script$2);
+    vue.component('d-btn-group', script$2);
 };
 if (typeof window !== 'undefined' && window.Vue) {
     script$2.install(window.Vue);
 }
 
-// export { default as dButtonGroup } from './dButton/Group/index';
 // export { default as dInput } from './dInput/Base/index'
 // new
 
 var dComponents = /*#__PURE__*/Object.freeze({
     __proto__: null,
-    dButton: script$2
+    dButton: script$3,
+    dButtonGroup: script$2
 });
 
 var getPage = function (data, page, maxItems) {

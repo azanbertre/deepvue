@@ -55,14 +55,14 @@
 
   &--has-color
     .d-input
-    &:focus
-      border-bottom: 2px solid -color('color',1)
-      ~ .d-input__icon
-        color: -color('color',1)
-      ~ .d-input__label
-        color: -color('color',1)
-      ~ .d-input__label--placeholder
-        color: -color('color',1)
+      &:focus
+        border-bottom: 2px solid -color('color',1)
+        ~ .d-input__icon
+          color: -color('color',1)
+        ~ .d-input__label
+          color: -color('color',1)
+        ~ .d-input__label--placeholder
+          color: -color('color',1)
 
 .d-input
   border: 2px solid transparent
@@ -205,13 +205,13 @@
     border-radius: 5px
     &--danger
       .d-input__progress__bar
-      background: -color('danger',1)
+        background: -color('danger',1)
     &--warning
       .d-input__progress__bar
-      background: -color('warning',1)
+        background: -color('warning',1)
     &--success
       .d-input__progress__bar
-      background: -color('success',1)
+        background: -color('success',1)
     &__bar
       width: 32%
       height: 2px
@@ -260,8 +260,8 @@
 .d-input-parent
   &--border
     .d-input__icon
-    background: transparent !important
-    box-shadow: none !important
+      background: transparent !important
+      box-shadow: none !important
     .d-input-content
       border-radius: 0
       .d-input__affects

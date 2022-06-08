@@ -7,7 +7,7 @@
 # Hello VitePress
 
 <d-row>
-    <d-btn>Default</d-btn>
+    <d-btn color="primary">Default</d-btn>
     <d-btn flat>Flat</d-btn>
     <d-btn gradient>Gradient</d-btn>
     <d-btn border>Border</d-btn>
