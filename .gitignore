@@ -1,13 +1,14 @@
 .DS_Store
 node_modules
 # dist
+dist/
 
 # local env files
 .env.local
 .env.*.local
 *.map
 dist/demo.html
-docs/.vuepress/dist/
+docs/.vitepress/dist/
 
 # Log files
 npm-debug.log*
@@ -29,6 +30,6 @@ yarn.lock
 
 \.vs/
 
-docs/.vuepress/.cache
-docs/.vuepress/.temp
-docs/.vuepress/oldtheme
+docs/.vitepress/.cache
+docs/.vitepress/.temp
+docs/.vitepress/oldtheme

@@ -19,9 +19,9 @@ export default [
     ],
     plugins: [
       peerDepsExternal(), vue(), scss({
-        output: 'dist/deepvue.css',
-        runtime: sass,
-        failOnError: false
+        output: 'dist/deepvue.min.css',
+        outputStyle: "compressed",
+        failOnError: true,
       }), typescript()
     ]
   }
