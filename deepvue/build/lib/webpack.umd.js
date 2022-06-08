@@ -1,6 +1,6 @@
 const path = require('path');
 const baseWebpackConfig = require('../webpack.base.js');
-const merge = require('webpack-merge');
+const { merge } = require('webpack-merge');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = merge(baseWebpackConfig, {
@@ -12,10 +12,12 @@ module.exports = merge(baseWebpackConfig, {
     filename: '[name].js',
     path: path.resolve(process.cwd(), 'dist'),
     publicPath: '/dist/',
-    library: 'DeepVue',
-    libraryTarget: 'umd',
-    libraryExport: 'default',
-    umdNamedDefine: true,
+    library: {
+      name: 'DeepVue',
+      type: 'umd',
+      export: 'default',
+      umdNamedDefine: true
+    },
     globalObject: 'typeof self !== \'undefined\' ? self : this'
   },
   plugins:[

@@ -1,7 +1,7 @@
-import './style.sass'
+import dCol from './dCol.vue';
+import dRow from './dRow.vue';
 
-import dCol from './DCol';
-import dRow from './DRow';
+import './style.sass'
 
 dCol.install = (vue: any) => {
   vue.component('d-col', dCol);

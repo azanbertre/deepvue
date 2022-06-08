@@ -1,0 +1,339 @@
+@import '../../../styles/mixins'
+@import 'root'
+
+@mixin state($color)
+  .d-input
+    background: -color($color, .1) !important
+    color: -color($color, 1)
+  .d-input__label
+    color: -color($color, 1)
+  .d-input__icon
+    color: -color($color, 1)
+    background: -color($color, .1)
+    box-shadow: -15px 10px 10px -10px -color($color, .1)
+
+.d-input-parent
+  display: flex
+  align-self: center
+  justify-content: center
+  flex-direction: column
+  position: relative
+  &.square
+    .d-input-content
+      border-radius: 0 !important
+  &.textWhite
+    .d-input
+      color: #fff
+  &.transparent
+    .d-input
+      background: transparent !important
+  &.block
+    width: 100%
+    .d-input
+      width: 100%
+  &--has-label
+    margin-top: 20px !important
+  &--state-success
+    @include state('success')
+  &--state-danger
+    @include state('danger')
+  &--state-warning
+    @include state('warning')
+  &--state-dark
+    @include state('dark')
+  &--state-primary
+    @include state('primary')
+
+.d-input-content
+  display: flex
+  align-items: center
+  justify-content: flex-start
+  position: relative
+  border-radius: 12px
+  + .d-input__message
+    padding-top: 2px
+
+  &--has-color
+    .d-input
+    &:focus
+      border-bottom: 2px solid -color('color',1)
+      ~ .d-input__icon
+        color: -color('color',1)
+      ~ .d-input__label
+        color: -color('color',1)
+      ~ .d-input__label--placeholder
+        color: -color('color',1)
+
+.d-input
+  border: 2px solid transparent
+  background: -color('gray-2')
+  color: -color('text')
+  padding: 7px 13px
+  border-radius: inherit
+  transition: all .25s ease
+  padding-left: 10px
+  width: 200px
+  &:focus
+    background: -color('gray-3')
+    padding-left: 15px
+    &.d-input--has-icon:not(.d-input--has-icon--after)
+      padding-left: 40px
+      ~ .d-input__icon
+        box-shadow: 15px 10px 10px -10px rgba(0,0,0, -var(shadow-opacity))
+      ~ .d-input__label:not(.d-input__label--placeholder):not(.d-input__label--label)
+        left: 44px
+    ~ .d-input__icon
+      box-shadow: -15px 10px 10px -10px rgba(0,0,0, -var(shadow-opacity))
+      transform: translate(-6px, -6px)
+      background: -color('gray-1')
+      &--after
+        transform: translate(6px, -6px)
+
+    ~ .d-input__label:not(.d-input__label--placeholder):not(.d-input__label--label)
+      opacity: 0
+      left: 20px
+    ~ .d-input__label--placeholder
+      opacity: 1
+      visibility: visible
+      pointer-events: auto
+      transform: translate(-3%, -77%)
+      font-size: .75rem
+  &__label
+    position: absolute
+    left: 13px
+    font-size: .8rem
+    transition: all .25s ease
+    cursor: text
+    user-select: none
+    pointer-events: none
+    width: 100%
+    height: 100%
+    display: flex
+    align-items: center
+    justify-content: flex-start
+    opacity: .4
+    &--hidden
+      opacity: 0
+      visibility: hidden
+      &.d-input__label--placeholder
+        opacity: 1
+        visibility: visible
+        pointer-events: auto
+        transform: translate(-3px, -80%)
+        font-size: .75rem
+    &--label
+      opacity: 1
+      visibility: visible
+      pointer-events: auto
+      transform: translate(-2px, -77%)
+      font-size: .75rem
+  &--has-icon
+    padding-left: 38px
+    ~ .d-input__label
+      left: 44px
+
+    &--after
+      padding-left: 7px
+      padding-right: 38px
+      ~ .d-input__label
+        left: 13px
+      &.d-input__label--label
+        transform: translate(calc(-3px - 22px), -80%) !important
+    &:focus
+      &--has-icon
+        &--after
+          ~ .d-input__label
+            left: 44px
+          ~ .d-input__label--placeholder
+            transform: translate(calc(-3px - 22px), -80%) !important
+          ~ .d-input__label
+            left: 44px
+
+  &__icon
+    position: absolute
+    right: auto
+    width: 36px
+    height: 36px
+    display: flex
+    align-items: center
+    justify-content: center
+    box-shadow: 12px 0 10px -10px rgba(0,0,0,-var(shadow-opacity))
+    transition: all .25s ease
+    border-radius: inherit
+    background: -color('gray-2')
+    pointer-events: none
+    left: 0
+    &--after
+      left: auto
+      right: 0
+      box-shadow: -12px 0 10px -10px rgba(0,0,0, -var(shadow-opacity))
+    &--click
+      pointer-events: auto !important
+      cursor: pointer
+      &:hover
+        box-shadow: -15px 10px 10px -10px rgba(0,0,0, -var(shadow-opacity))
+        transform: translate(-6px, -6px)
+        background: -color('gray-1')
+        &.d-input__icon--after
+          transform: translate(6px, -6px)
+
+  &__message
+    font-size: .7rem
+    position: relative
+    padding: 0 7px
+    transition: all .25s ease
+    overflow: hidden
+    &--success
+      color: -color('success',1)
+    &--danger
+      color: -color('danger',1)
+    &--warning
+      color: -color('warning',1)
+    &--dark
+      color: -color('dark',1)
+    &--primary
+      color: -color('primary',1)
+
+  &__progress
+    width: 95%
+    left: 2.5%
+    position: relative
+    height: 2px
+    background: -color('gray-2')
+    margin-top: 5px
+    overflow: hidden
+    border-radius: 5px
+    &--danger
+      .d-input__progress__bar
+      background: -color('danger',1)
+    &--warning
+      .d-input__progress__bar
+      background: -color('warning',1)
+    &--success
+      .d-input__progress__bar
+      background: -color('success',1)
+    &__bar
+      width: 32%
+      height: 2px
+      max-width: 100%
+      transition: all .25s ease
+      border-radius: 5px
+
+  &__loading
+    position: absolute
+    width: 22px
+    height: 22px
+    right: 7px
+    pointer-events: none
+    border-radius: 50%
+    box-sizing: border-box
+    background: inherit
+    cursor: default
+    &:after
+      box-sizing: border-box
+      position: absolute
+      width: 100%
+      height: 100%
+      border: 2px solid -color('primary',1)
+      border-radius: inherit
+      border-top: 2px solid transparent
+      border-left: 2px solid transparent
+      border-right: 2px solid transparent
+      animation: rotateInputLoading .8s ease infinite
+      top: 0
+      content: ''
+    &:before
+      box-sizing: border-box
+      top: 0
+      position: absolute
+      width: 100%
+      height: 100%
+      border: 2px dashed -color('primary',1)
+      border-radius: inherit
+      border-top: 2px solid transparent
+      border-left: 2px solid transparent
+      border-right: 2px solid transparent
+      animation: rotateInputLoading .8s linear infinite
+      opacity: .2
+      content: ''
+
+.d-input-parent
+  &--border
+    .d-input__icon
+    background: transparent !important
+    box-shadow: none !important
+    .d-input-content
+      border-radius: 0
+      .d-input__affects
+        width: 100%
+        height: 100%
+        position: absolute
+        top: 0
+        left: 0
+        pointer-events: none
+        &__1
+          border-bottom: 2px solid -color('gray-3')
+          width: 100%
+          height: 2px
+          position: absolute
+          bottom: 0
+          transition: all .25s ease
+        &__2
+          border-bottom: 2px solid -color('color',1)
+          width: 0
+          height: 2px
+          position: absolute
+          bottom: 0
+          transition: all .25s ease
+          left: 50%
+          transform: translate(-50%)
+      .d-input
+        background: transparent
+        border-radius: 0
+        &:focus
+          ~ .d-input__affects
+            .d-input__affects__2
+              width: 100%
+  &--shadow
+    .d-input__icon
+    background: transparent
+    z-index: 100
+    .d-input-content
+      .d-input__affects
+        width: 100%
+        height: 100%
+        position: absolute
+        top: 0
+        left: 0
+        border-radius: inherit
+        pointer-events: none
+        z-index: 10
+        &__1
+          box-shadow: 0 6px 25px -6px rgba(0,0,0, -var(shadow-opacity))
+          width: 100%
+          height: 100%
+          position: absolute
+          top: 0
+          transition: all .25s ease
+          z-index: 200
+          border-radius: inherit
+      .d-input
+        background: transparent
+        border-radius: 0
+        border: 2px solid transparent
+        &:focus
+          transform: translate(0,3px)
+          ~ .d-input__icon
+            background: -color('background') !important
+            opacity: 1
+            box-shadow: 0 10px 20px -5px rgba(0,0,0, -var(shadow-opacity)) !important
+          ~ .d-input__affects
+            .d-input__affects__1
+              transform: translate(0,3px)
+              box-shadow: 0 0 3px 0 rgba(0,0,0, -var(shadow-opacity))
+
+@keyframes rotateInputLoading
+  0%
+    transform: rotate(0deg)
+  100%
+    transform: rotate(360deg)

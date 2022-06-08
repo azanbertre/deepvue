@@ -1,8 +1,9 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
 const pkg = require('../package.json');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const { VueLoaderPlugin } = require("vue-loader");
+const TerserPlugin = require("terser-webpack-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const WebpackBar = require('webpackbar');
 
 module.exports = {
@@ -19,13 +20,18 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.vue$/,
+        loader: "vue-loader",
+        options: {
+          loaders: {
+            ts: "babel-loader"
+          }
+        },
+      },
+      {
         test: /\.(js|jsx|tsx|ts)$/,
         exclude: /node_modules/,
-        loader: [
-          {
-            loader: 'babel-loader',
-          }
-        ],
+        loader: 'babel-loader'
       },
       {
         test: /\.sass$/,
@@ -58,7 +64,8 @@ module.exports = {
   */`,
       raw: true,
       entryOnly: true
-    })
+    }),
+    new VueLoaderPlugin(),
   ],
   resolve: {
     extensions: [ '.tsx', '.ts', '.js', '.sass' ],
@@ -66,12 +73,11 @@ module.exports = {
   optimization: {
     minimize: true,
     minimizer: [
-      new UglifyJsPlugin({
+      new TerserPlugin({
         include: /(min|index)\.js$/,
       }),
-      new OptimizeCSSAssetsPlugin({
-        assetNameRegExp: /(min|style)\.css$/g,
-        cssProcessor: require('cssnano'),
+      new CssMinimizerPlugin({
+        include: /(min|style)\.css$/g,
       })
     ]
   }

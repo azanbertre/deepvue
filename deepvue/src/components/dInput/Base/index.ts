@@ -1,8 +1,8 @@
-import component from './dButtonGroup.vue';
+import component from './dInput';
 import './style.sass';
 
 component.install = (vue: any) => {
-  vue.component('d-btn-group', component);
+  vue.component('d-input', component);
 }
 
 if (typeof window !== 'undefined' && window.Vue) {

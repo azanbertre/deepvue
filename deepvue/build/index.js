@@ -6,25 +6,25 @@ const emptyLine = print();
 const chalk = require('chalk');
 const green = print('green');
 
-emptyLine();
-emptyLine();
-yellow(`Building ${chalk.bold('DeepVue')} Framework`);
-emptyLine();
-emptyLine();
-
-execSync(
-  `npx webpack --config build/lib/webpack.umd.js`, {stdio: 'inherit'}
-)
-
-emptyLine();
-emptyLine();
-yellow(`Building Components`);
-emptyLine();
-emptyLine();
-
-execSync(
-  `npx webpack --config build/components/webpack.components.js`, {stdio: 'inherit'}
-)
+// emptyLine();
+// emptyLine();
+// yellow(`Building ${chalk.bold('DeepVue')} Framework`);
+// emptyLine();
+// emptyLine();
+//
+// execSync(
+//   `npx webpack --config build/lib/webpack.umd.js`, {stdio: 'inherit'}
+// )
+//
+// emptyLine();
+// emptyLine();
+// yellow(`Building Components`);
+// emptyLine();
+// emptyLine();
+//
+// execSync(
+//   `npx webpack --config build/components/webpack.components.js`, {stdio: 'inherit'}
+// )
 
 emptyLine();
 emptyLine();

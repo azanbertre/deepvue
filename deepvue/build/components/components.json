@@ -1,5 +1,4 @@
 {
   "dButton": "./src/components/dButton/Base/index.ts",
-  "dButtonGroup": "./src/components/dButton/Group/index.ts",
-  "[new]": ""
+  "new": ""
 }

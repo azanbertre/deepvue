@@ -72,16 +72,16 @@ export default class D${name} extends DComponent {
 }
 
 function addComponentJson(name) {
-  sed('-i', '"[new]": ""', `"d${name}": "./src/components/d${name}/Base/index.ts",\n  "[new]": ""`, './build/components/components.json');
+  sed('-i', '"new": ""', `"d${name}": "./src/components/d${name}/Base/index.ts",\n  "new": ""`, './build/components/components.json');
 }
 
 function addComponentExport(name) {
-  sed('-i', '// [new]', `export { default as d${name} } from './d${name}/Base/index'\n// [new]`, './src/components/index.ts');
+  sed('-i', '// new', `export { default as d${name} } from './d${name}/Base/index'\n// new`, './src/components/index.ts');
 }
 
 function addComponentConfig(name) {
-  sed('-i', '// [new-1]', `{ text: '${name}', link: ${'`${lang}'}docs/components/${name}${'`'} },\n\t\t\t\t\t\t\t// [new-1]`, '../../config.js');
-  sed('-i', '// [new-2]', `${'`${lang}'}docs/components/${name}${'`'},\n\t\t\t\t\t\t// [new-2]`, '../../config.js');
+  sed('-i', '// new-1', `{ text: '${name}', link: ${'`${lang}'}docs/components/${name}${'`'} },\n\t\t\t\t\t\t\t// new-1`, '../../config.js');
+  sed('-i', '// new-2', `${'`${lang}'}docs/components/${name}${'`'},\n\t\t\t\t\t\t// new-2`, '../../config.js');
 }
 
 console.log(boxen('New Component Options', {padding: 1, margin: 2 , borderColor: 'yellow', borderStyle: 'round'}));
