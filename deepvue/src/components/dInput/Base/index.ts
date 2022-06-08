@@ -1,4 +1,4 @@
-import component from './dInput';
+import component from './dInput.vue';
 import './style.sass';
 
 component.install = (vue: any) => {
