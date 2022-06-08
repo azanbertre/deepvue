@@ -1,0 +1,38 @@
+/*!
+  * DeepVue v0.0.1-alpha
+  * Made by Pedro Borges
+  * Released under the MIT License.
+  * © 2022, azanbertre.
+  */
+.d-button-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.d-button-group .d-button {
+  margin: 0;
+}
+.d-button-group .d-button:not(:last-of-type):not(:first-of-type) {
+  border-radius: 0;
+  border: 0;
+}
+.d-button-group .d-button:not(:last-of-type):not(:first-of-type).d-button--border:before {
+  border-left: 0;
+  width: 100%;
+}
+.d-button-group .d-button:not(:last-of-type):not(:first-of-type).d-button--border + .d-button--border:not(:last-of-type):before {
+  border-right: 0;
+  width: 100%;
+}
+.d-button-group .d-button:last-of-type {
+  border-radius: 0 12px 12px 0;
+}
+.d-button-group .d-button:first-of-type {
+  border-radius: 12px 0 0 12px;
+}
